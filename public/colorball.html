@@ -24,6 +24,29 @@
 	var rightBumperLoc = canvas.height/2-35;
 	var leftBumperLoc = canvas.height/2-35;
 	
+	
+	document.addEventListener("presskey", pressKey, false);
+	document.addEventListener("unpresskey", unpressKey, false);
+	
+	function pressKey(e) {
+		if (e.keyCode === 38) {
+			upArrow = true;
+		}
+		else if (e.keyCode === 40) {
+			downArrow = true;
+		}
+	}
+	
+	function unpressKey(e) {
+		if (e.keyCode === 38) {
+			upArrow = false;
+		}
+		else if (e.keyCode === 40) {
+			downArrow = false;
+		}
+	}
+	
+	
 	function startBoundary() {
 		window2d.beginPath();
 		window2d.rect(canvas.width/2-5,0,10,canvas.height);
@@ -69,27 +92,6 @@
 		else if (downArrow) {
 			rightBumperLoc -= 10;
 			leftBumperLoc += 10;
-		}
-	}
-	
-	document.addEventListener("presskey", pressKey, false);
-	document.addEventListener("unpresskey", unpressKey, false);
-	
-	function pressKey(e) {
-		if (e.keyCode === 38) {
-			upArrow = true;
-		}
-		else if (e.keyCode === 40) {
-			downArrow = true;
-		}
-	}
-	
-	function unpressKey(e) {
-		if (e.keyCode === 38) {
-			upArrow = false;
-		}
-		else if (e.keyCode === 40) {
-			downArrow = false;
 		}
 	}
 	
