@@ -11,4 +11,5 @@ h1 {
 	font-size: 80px;
 	color: yellow;
 	text-align: center;
+	text-shadow: 5px 5px #000000;
 }
