@@ -18,6 +18,9 @@
 	var canvas = document.getElementById("gameWindow");
 	var window2d = canvas.getContext("2d");
 	
+	var upArrow = false;
+	var downArrow = false;
+	
 	function startBoundary() {
 		window2d.beginPath();
 		window2d.rect(canvas.width/2-5,0,10,canvas.height);
@@ -55,6 +58,27 @@
 		startBall();
 		startRightBumper();
 		startLeftBumper();
+	}
+	
+	document.addEventListener("presskey", pressKey, false);
+	document.addEventListener("unpresskey", unpressKey, false);
+	
+	function pressKey(e) {
+		if (e.keyCode == 38) {
+			upArrow = true;
+		}
+		else if (e.keyCode == 40) {
+			downArrow = true;
+		}
+	}
+	
+	function unpressKey(e) {
+		if (e.keyCode == 38) {
+			upArrow = false;
+		}
+		else if (e.keyCode == 40) {
+			downArrow = false;
+		}
 	}
 	
 	setInterval(draw, 100);
