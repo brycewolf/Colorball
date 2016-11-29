@@ -18,15 +18,24 @@
 	var gameWindow = document.getElementById("gameWindow");
 	var gameWindow2d = gameWindow.getContext("2d");
 	
+	function startBoundary() {
+		gameWindow2d.beginPath();
+		gameWindow2d.rect(gameWindow.width/2-5,gameWindow.height,10,gameWindow.height);
+		gameWindow2d.fillStyle = "#000000";
+		gameWindow2d.fill();
+		gameWindow2d.closePath();
+	}
+	
 	function startBall() {
 		gameWindow2d.beginPath();
-		gameWindow2d.arc(gameWindow.width/2, gameWindow.height/2, 25, 0, Math.PI*2);
-		gameWindow2d.fillStyle = "#ffffff";
+		gameWindow2d.arc(gameWindow.width/2, gameWindow.height/2, 14, 0, Math.PI*2);
+		gameWindow2d.fillStyle = "#000000";
 		gameWindow2d.fill();
 		gameWindow2d.closePath();
 	}
 	
 	function draw() {
+		startBoundary();
 		startBall();
 	}
 	
