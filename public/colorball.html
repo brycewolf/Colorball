@@ -15,28 +15,46 @@
 	<canvas id="gameWindow" width="800" height="600" style="border:5px solid #000000;"></canvas>
 	
 	<script>
-	var gameWindow = document.getElementById("gameWindow");
-	var gameWindow2d = gameWindow.getContext("2d");
+	var window = document.getElementById("gameWindow");
+	var window2d = window.getContext("2d");
 	
 	function startBoundary() {
-		gameWindow2d.beginPath();
-		gameWindow2d.rect(gameWindow.width/2-5,0,10,gameWindow.height);
-		gameWindow2d.fillStyle = "#000000";
-		gameWindow2d.fill();
-		gameWindow2d.closePath();
+		window2d.beginPath();
+		window2d.rect(window.width/2-5,0,10,window.height);
+		window2d.fillStyle = "#000000";
+		window2d.fill();
+		window2d.closePath();
 	}
 	
 	function startBall() {
-		gameWindow2d.beginPath();
-		gameWindow2d.arc(gameWindow.width/2, gameWindow.height/2, 14, 0, Math.PI*2);
-		gameWindow2d.fillStyle = "#000000";
-		gameWindow2d.fill();
-		gameWindow2d.closePath();
+		window2d.beginPath();
+		window2d.arc(window.width/2, window.height/2, 14, 0, Math.PI*2);
+		window2d.fillStyle = "#000000";
+		window2d.fill();
+		window2d.closePath();
+	}
+	
+	function startRightBumper() {
+		window2d.beginPath();
+		window2d.rect(window.width/2+6, window.height/2-10, 10, 20);
+		window2d.fillStyle = "#000000";
+		window2d.fill();
+		window2d.closePath();
+	}
+	
+	function startLeftBumper() {
+		window2d.beginPath();
+		window2d.rect(window.width/2-16, window.height/2-10, 10, 20);
+		window2d.fillStyle = "#000000";
+		window2d.fill();
+		window2d.closePath();
 	}
 	
 	function draw() {
 		startBoundary();
 		startBall();
+		startRightBumper();
+		startLeftBumper();
 	}
 	
 	setInterval(draw, 100);
