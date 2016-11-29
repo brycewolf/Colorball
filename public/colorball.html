@@ -24,9 +24,8 @@
 	var rightBumperLoc = canvas.height/2-35;
 	var leftBumperLoc = canvas.height/2-35;
 	
-	
-	document.addEventListener("presskey", pressKey, false);
-	document.addEventListener("unpresskey", unpressKey, false);
+	document.addEventListener("keydown", pressKey, false);
+	document.addEventListener("keyup", unpressKey, false);
 	
 	function pressKey(e) {
 		if (e.keyCode === 38) {
