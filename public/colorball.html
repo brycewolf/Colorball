@@ -21,6 +21,9 @@
 	var upArrow = false;
 	var downArrow = false;
 	
+	var rightBumperLoc = canvas.height/2-35;
+	var leftBumperLoc = canvas.height/2-35;
+	
 	function startBoundary() {
 		window2d.beginPath();
 		window2d.rect(canvas.width/2-5,0,10,canvas.height);
@@ -39,7 +42,7 @@
 	
 	function startRightBumper() {
 		window2d.beginPath();
-		window2d.rect(canvas.width/2+6, canvas.height/2-35, 10, 70);
+		window2d.rect(canvas.width/2+6, rightBumperLoc, 10, 70);
 		window2d.fillStyle = "#000000";
 		window2d.fill();
 		window2d.closePath();
@@ -47,7 +50,7 @@
 	
 	function startLeftBumper() {
 		window2d.beginPath();
-		window2d.rect(canvas.width/2-16, canvas.height/2-35, 10, 70);
+		window2d.rect(canvas.width/2-16, leftBumperLoc, 10, 70);
 		window2d.fillStyle = "#000000";
 		window2d.fill();
 		window2d.closePath();
@@ -58,25 +61,34 @@
 		startBall();
 		startRightBumper();
 		startLeftBumper();
+		
+		if (upArrow) {
+			rightBumperLoc += 10;
+			leftBumperLoc -= 10;
+		}
+		else if (downArrow) {
+			rightBumperLoc -= 10;
+			leftBumperLoc += 10;
+		}
 	}
 	
 	document.addEventListener("presskey", pressKey, false);
 	document.addEventListener("unpresskey", unpressKey, false);
 	
 	function pressKey(e) {
-		if (e.keyCode == 38) {
+		if (e.keyCode === 38) {
 			upArrow = true;
 		}
-		else if (e.keyCode == 40) {
+		else if (e.keyCode === 40) {
 			downArrow = true;
 		}
 	}
 	
 	function unpressKey(e) {
-		if (e.keyCode == 38) {
+		if (e.keyCode === 38) {
 			upArrow = false;
 		}
-		else if (e.keyCode == 40) {
+		else if (e.keyCode === 40) {
 			downArrow = false;
 		}
 	}
