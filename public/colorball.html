@@ -1,8 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
+	 <title>COLORBALL: Brick Breaker Evolved</title>
+	 <meta charset="utf-8">
+	 <link rel="stylesheet" href="stylesheets/style.css">
 </head>
 <body>
+
+	<canvas id="gameWindow" width="1366" height="768"></canvas>
+	
+	<script>
+	var gameWindow = document.getElementById("gameWindow");
+	var gameWindow2d = gameWindow.getContext("2d");
+	
+	function startBall() {
+		gameWindow2d.beginPath();
+		gameWindow2d.arc(gameWindow.width/2, gameWindow.height/2, 25, 0, Math.PI*2);
+		gameWindow2d.fillStyle = "#ffffff";
+		gameWindow2d.fill();
+		gameWindow2d.closePath();
+	}
+	
+	
+	</script>
+	
 	<h1 id="message">IT WORKED</h1>
 </body>
 </html>
