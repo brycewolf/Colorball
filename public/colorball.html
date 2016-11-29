@@ -7,7 +7,7 @@
 </head>
 <body>
 
-	<canvas id="gameWindow" width="1366" height="768"></canvas>
+	<canvas id="gameWindow" width="800" height="600"></canvas>
 	
 	<script>
 	var gameWindow = document.getElementById("gameWindow");
@@ -24,6 +24,8 @@
 	function draw() {
 		startBall();
 	}
+	
+	setInterval(draw, 100);
 	
 	</script>
 	
