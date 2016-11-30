@@ -49,8 +49,9 @@
 	
 	var timeLeft = 250;
 	var points = 250;
+	var barrierTime = 0;
 	
-	var rightOnly = true;
+	var barrierOn = true;
 	
 	//for loop adapted from MDN game dev tutorial
 	var bricksLeft = [];
@@ -129,7 +130,14 @@
 	function startBoundary() {
 		window2d.beginPath();
 		window2d.rect(canvas.width/2-5,0,10,canvas.height);
-		window2d.fillStyle = red;
+		if (barrierTime > 20) {
+			window2d.fillStyle = invisible;
+			barrierOn = false;
+		}
+		else {
+			window2d.fillStyle = red;
+			barrierOn = true;
+		}
 		window2d.fill();
 		window2d.closePath();
 	}
@@ -179,6 +187,10 @@
 		if (points >= 1) {
 			points -= 1;	
 		}
+		if (barrierTime === 25) {
+			barrierTime = 0;
+		}
+		barrierTime += 1;
 	}
 	
 	function draw() {
@@ -192,28 +204,24 @@
 		startPointCounter();
 		startTimer();
 		
+		
+		if (timeLeft % 25 === 0)
 		//check for hitting the bricks
 		for (var i = 0; i<numBrickCols; i++) {
 			for (var j = 0; j<numBrickRows; j++) {
 				if (ballX >= bricksRight[i][j].x && ballY >= bricksRight[i][j].y && ballY <= bricksRight[i][j].y+brickHeight && bricksRight[i][j].visible) {
-					if (rightOnly) {
-						bricksRight[i][j].visible = false;
-						points = points + 10;
-						ballSpeedX = -ballSpeedX;
-						ballColor = bricksRight[i][j].color;
-					}
-					else {
-						points = points -10;
-					}
+					bricksRight[i][j].visible = false;
+					points = points + 10;
+					ballSpeedX = -ballSpeedX;
+					ballColor = bricksRight[i][j].color;
 				}
 			}
 		}
 
 
 		
-		//check for hitting the bumper
-		
-		if (rightOnly) {
+		//check for hitting the bumper (RIGHT)
+		if (barrierOn && ballX >= canvas.width) {
 			//X
 			if (ballX > canvas.width - ballSize) {
 				ballSpeedX = -ballSpeedX;
