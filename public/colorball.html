@@ -257,11 +257,11 @@
 				if (ballX < ballSize) {
 					ballSpeedX = -ballSpeedX;
 				}
-				else if (ballX > canvas.width/2 - ballSize - 5 && (ballY < rightBumperLoc || ballY > rightBumperLoc + bumperHeight)) {
+				else if (ballX > canvas.width/2 - ballSize - 5 && (ballY < leftBumperLoc || ballY > leftBumperLoc + bumperHeight)) {
 					points = 0;
 					ballSpeedX = -ballSpeedX;
 				}
-				else if (ballX > canvas.width/2 - ballSize - 5 && (ballY > rightBumperLoc && ballY < rightBumperLoc + bumperHeight)) {
+				else if (ballX > canvas.width/2 - ballSize - 5 && (ballY > leftBumperLoc && ballY < leftBumperLoc + bumperHeight)) {
 					ballSpeedX = -ballSpeedX;
 				}
 			
@@ -274,7 +274,7 @@
 				if (ballX < ballSize) {
 					ballSpeedX = -ballSpeedX;
 				}
-				else if (ballX > canvas.width/2 - ballSize - 5 && (ballY > rightBumperLoc && ballY < rightBumperLoc + bumperHeight)) {
+				else if (ballX > canvas.width/2 - ballSize - 5 && (ballY > leftBumperLoc && ballY < leftBumperLoc + bumperHeight)) {
 					ballSpeedX = -ballSpeedX;
 				}
 				
