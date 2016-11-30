@@ -192,12 +192,11 @@
 		//check for hitting the bricks
 		for (var i = 0; i<numBrickCols; i++) {
 			for (var j = 0; j<numBrickRows; j++) {
-				if (ballX >= bricksRight[i][j].x && ballY >= bricksRight[i][j].y && bricksRight[i][j].visible) {
+				if (ballX >= bricksRight[i][j].x && ballY >= bricksRight[i][j].y && ballY <= bricksRight[i][j].y-brickHeight && bricksRight[i][j].visible) {
 					if (rightOnly) {
 						bricksRight[i][j].visible = false;
 						points = points + 10;
 						ballSpeedX = -ballSpeedX;
-						ballSpeedY = -ballSpeedY;
 					}
 					else {
 						points = points -10;
