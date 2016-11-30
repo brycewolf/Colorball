@@ -249,6 +249,43 @@
 				}
 			}
 		}
+		
+		//check for hitting the bumper (LEFT)
+		if (ballX < canvas.width/2) {
+			//X
+			if (barrierOn) {
+				if (ballX < ballSize) {
+					ballSpeedX = -ballSpeedX;
+				}
+				else if (ballX > canvas.width/2 - ballSize - 5 && (ballY < rightBumperLoc || ballY > rightBumperLoc + bumperHeight)) {
+					points = 0;
+					ballSpeedX = -ballSpeedX;
+				}
+				else if (ballX > canvas.width/2 - ballSize - 5 && (ballY > rightBumperLoc && ballY < rightBumperLoc + bumperHeight)) {
+					ballSpeedX = -ballSpeedX;
+				}
+			
+				//Y
+				if (ballY > canvas.height - ballSize || ballY < ballSize) {
+					ballSpeedY = -ballSpeedY;
+				}
+			}
+			else {
+				if (ballX < ballSize) {
+					ballSpeedX = -ballSpeedX;
+				}
+				else if (ballX > canvas.width/2 - ballSize - 5 && (ballY > rightBumperLoc && ballY < rightBumperLoc + bumperHeight)) {
+					ballSpeedX = -ballSpeedX;
+				}
+				
+				if (ballY > canvas.height - ballSize || ballY < ballSize) {
+					ballSpeedY = -ballSpeedY;
+				}
+			}
+		}
+			
+			
+			
 		/*if (ballX > canvas.width - ballSize || ballX < ballSize) {
 			ballSpeedX = -ballSpeedX;
 		}
