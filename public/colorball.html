@@ -197,6 +197,7 @@
 						bricksRight[i][j].visible = false;
 						points = points + 10;
 						ballSpeedX = -ballSpeedX;
+						ballColor = bricksRight[i][j].color;
 					}
 					else {
 						points = points -10;
@@ -208,6 +209,13 @@
 
 		
 		//check for hitting the walls
+		/*if (rightOnly) {
+			
+		}
+		else {
+			
+		}*/
+		
 		if (ballX > canvas.width - ballSize || ballX < ballSize) {
 			ballSpeedX = -ballSpeedX;
 		}
