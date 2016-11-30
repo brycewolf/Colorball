@@ -38,6 +38,7 @@
 	
 	var rightBumperLoc = canvas.height/2-35;
 	var leftBumperLoc = canvas.height/2-35;
+	var bumperHeight = 70;
 	
 	var numBrickCols = 4;
 	var numBrickRows = 8;
@@ -143,7 +144,7 @@
 	
 	function startRightBumper() {
 		window2d.beginPath();
-		window2d.rect(canvas.width/2+6, rightBumperLoc, 10, 70);
+		window2d.rect(canvas.width/2+6, rightBumperLoc, 10, bumperHeight);
 		window2d.fillStyle = black;
 		window2d.fill();
 		window2d.closePath();
@@ -151,7 +152,7 @@
 	
 	function startLeftBumper() {
 		window2d.beginPath();
-		window2d.rect(canvas.width/2-16, leftBumperLoc, 10, 70);
+		window2d.rect(canvas.width/2-16, leftBumperLoc, 10, bumperHeight);
 		window2d.fillStyle = black;
 		window2d.fill();
 		window2d.closePath();
@@ -217,11 +218,11 @@
 			if (ballX > canvas.width - ballSize) {
 				ballSpeedX = -ballSpeedX;
 			}
-			else if (ballX < canvas.width/2 + ballSize + 16 && (ballY < rightBumperLoc || ballY > rightBumperLoc + 70)) {
+			else if (ballX < canvas.width/2 + ballSize + 5 && (ballY < rightBumperLoc || ballY > rightBumperLoc + bumperHeight)) {
 				points = 0;
 				ballSpeedX = -ballSpeedX;
 			}
-			else if (ballX < canvas.width/2 + ballSize + 16 && (ballY > rightBumperLoc && ballY < rightBumperLoc + 70)) {
+			else if (ballX < canvas.width/2 + ballSize + 5 && (ballY > rightBumperLoc && ballY < rightBumperLoc + bumperHeight)) {
 				ballSpeedX = -ballSpeedX;
 			}
 			
