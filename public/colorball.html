@@ -183,7 +183,9 @@
 	}
 	
 	function changeTimer() {
-		timeLeft -= 1;
+		if (timeLeft >= 1) {
+			timeLeft -= 1;	
+		}
 		if (points >= 1) {
 			points -= 1;	
 		}
@@ -207,7 +209,7 @@
 		//check for hitting the bricks (RIGHT)
 		for (var i = 0; i<numBrickCols; i++) {
 			for (var j = 0; j<numBrickRows; j++) {
-				if (ballX >= bricksRight[i][j].x && ballY >= bricksRight[i][j].y && ballY <= bricksRight[i][j].y+brickHeight && bricksRight[i][j].visible) {
+				if (ballX >= bricksRight[i][j].x - brickWidth && ballY >= bricksRight[i][j].y && ballY <= bricksRight[i][j].y+brickHeight && bricksRight[i][j].visible) {
 					bricksRight[i][j].visible = false;
 					points = points + 10;
 					ballSpeedX = -ballSpeedX;
@@ -219,7 +221,7 @@
 		//check for hitting the bricks (LEFT)
 		for (var i = 0; i<numBrickCols; i++) {
 			for (var j = 0; j<numBrickRows; j++) {
-				if (ballX <= bricksLeft[i][j].x && ballY >= bricksLeft[i][j].y && ballY <= bricksLeft[i][j].y+brickHeight && bricksLeft[i][j].visible) {
+				if (ballX <= bricksLeft[i][j].x + brickWidth && ballY >= bricksLeft[i][j].y && ballY <= bricksLeft[i][j].y+brickHeight && bricksLeft[i][j].visible) {
 					bricksLeft[i][j].visible = false;
 					points = points + 10;
 					ballSpeedX = -ballSpeedX;
@@ -237,7 +239,7 @@
 					ballSpeedX = -ballSpeedX;
 				}
 				else if (ballX < canvas.width/2 + ballSize + 5 && (ballY < rightBumperLoc || ballY > rightBumperLoc + bumperHeight)) {
-					points = 0;
+					points = points - 10;
 					ballSpeedX = -ballSpeedX;
 				}
 				else if (ballX < canvas.width/2 + ballSize + 5 && (ballY > rightBumperLoc && ballY < rightBumperLoc + bumperHeight)) {
@@ -271,7 +273,7 @@
 					ballSpeedX = -ballSpeedX;
 				}
 				else if (ballX > canvas.width/2 - ballSize - 5 && (ballY < leftBumperLoc || ballY > leftBumperLoc + bumperHeight)) {
-					points = 0;
+					points = points - 10;
 					ballSpeedX = -ballSpeedX;
 				}
 				else if (ballX > canvas.width/2 - ballSize - 5 && (ballY > leftBumperLoc && ballY < leftBumperLoc + bumperHeight)) {
