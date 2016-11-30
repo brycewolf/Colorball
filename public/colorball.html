@@ -61,7 +61,8 @@
 	for (var i=0; i<numBrickCols; i++) {
 		bricksRight[i] = [];
 		for (var j=0; j<numBrickRows; j++) {
-			bricksRight[i][j] = { x: 0, y: 0, visible: true, color: black };
+			//the random hex generator snippet was created by Paul Irish https://www.paulirish.com/2009/random-hex-color-code-snippets/
+			bricksRight[i][j] = { x: 0, y: 0, visible: true, color: "#"+Math.floor(Math.random()*16777215).toString(16) };
 		}
 	}
 	
