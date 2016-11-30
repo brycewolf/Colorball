@@ -221,22 +221,36 @@
 
 		
 		//check for hitting the bumper (RIGHT)
-		if (barrierOn && ballX >= canvas.width) {
+		if (ballX >= canvas.width) {
 			//X
-			if (ballX > canvas.width - ballSize) {
-				ballSpeedX = -ballSpeedX;
-			}
-			else if (ballX < canvas.width/2 + ballSize + 5 && (ballY < rightBumperLoc || ballY > rightBumperLoc + bumperHeight)) {
-				points = 0;
-				ballSpeedX = -ballSpeedX;
-			}
-			else if (ballX < canvas.width/2 + ballSize + 5 && (ballY > rightBumperLoc && ballY < rightBumperLoc + bumperHeight)) {
-				ballSpeedX = -ballSpeedX;
-			}
+			if (barrierOn) {
+				if (ballX > canvas.width - ballSize) {
+					ballSpeedX = -ballSpeedX;
+				}
+				else if (ballX < canvas.width/2 + ballSize + 5 && (ballY < rightBumperLoc || ballY > rightBumperLoc + bumperHeight)) {
+					points = 0;
+					ballSpeedX = -ballSpeedX;
+				}
+				else if (ballX < canvas.width/2 + ballSize + 5 && (ballY > rightBumperLoc && ballY < rightBumperLoc + bumperHeight)) {
+					ballSpeedX = -ballSpeedX;
+				}
 			
-			//Y
-			if (ballY > canvas.height - ballSize || ballY < ballSize) {
-				ballSpeedY = -ballSpeedY;
+				//Y
+				if (ballY > canvas.height - ballSize || ballY < ballSize) {
+					ballSpeedY = -ballSpeedY;
+				}
+			}
+			else {
+				if (ballX > canvas.width - ballSize) {
+					ballSpeedX = -ballSpeedX;
+				}
+				else if (ballX < canvas.width/2 + ballSize + 5 && (ballY > rightBumperLoc && ballY < rightBumperLoc + bumperHeight)) {
+					ballSpeedX = -ballSpeedX;
+				}
+				
+				if (ballY > canvas.height - ballSize || ballY < ballSize) {
+					ballSpeedY = -ballSpeedY;
+				}
 			}
 		}
 		/*if (ballX > canvas.width - ballSize || ballX < ballSize) {
