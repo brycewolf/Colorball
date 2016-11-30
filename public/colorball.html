@@ -79,16 +79,17 @@
 	}
 	
 	function draw() {
+		window2d.clearRect(0, 0, canvas.width, canvas.height);
 		startBoundary();
 		startBall();
 		startRightBumper();
 		startLeftBumper();
 		
-		if (upArrow) {
+		if (upArrow && rightBumperLoc > 0) {
 			rightBumperLoc += 10;
 			leftBumperLoc -= 10;
 		}
-		else if (downArrow) {
+		else if (downArrow && leftBumperLoc > 0) {
 			rightBumperLoc -= 10;
 			leftBumperLoc += 10;
 		}
