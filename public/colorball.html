@@ -204,8 +204,6 @@
 		startPointCounter();
 		startTimer();
 		
-		
-		if (timeLeft % 25 === 0)
 		//check for hitting the bricks
 		for (var i = 0; i<numBrickCols; i++) {
 			for (var j = 0; j<numBrickRows; j++) {
@@ -218,8 +216,6 @@
 			}
 		}
 
-
-		
 		//check for hitting the bumper (RIGHT)
 		if (ballX >= canvas.width/2) {
 			//X
