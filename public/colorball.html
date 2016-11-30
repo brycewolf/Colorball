@@ -1,3 +1,4 @@
+/*globals i */
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,10 +35,26 @@
 	
 	var red = "#ff0000";
 	var black = "#000000";
+	var ballColor = "#000000";
 	var invisible = "#eee";
 	
 	var rightBumperLoc = canvas.height/2-35;
 	var leftBumperLoc = canvas.height/2-35;
+	
+	var numBrickCols = 4;
+	var numBrickRows = 12;
+	var brickWidth = 20;
+	var brickHeight = 50;
+	var offset = 25;
+	
+	//for loop adapted from MDN game dev tutorial
+	var bricks = [];
+	for (var i=0; i<numBrickCols; i++) {
+		bricks[i] = [];
+		for (var j=0; j<numBrickRows; j++) {
+			bricks[i][j] = { x: 0, y: 0, visible: true, color: black };
+		}
+	}
 	
 	document.addEventListener("keydown", pressKey, false);
 	document.addEventListener("keyup", unpressKey, false);
@@ -61,6 +78,23 @@
 	}
 	
 	
+	//startBricks adapted from MDN game dev tutorial
+	function startBricks() {
+		for (var i = 0; i<numBrickCols; i++) {
+			for (var j = 0; j<numBrickCols; j++){
+				if (bricks[i][j].visible) {
+					bricks[i][j].x = i*brickWidth + offset;
+					bricks[i][j].y = j*brickHeight + offset;
+					window2d.beginPath();
+					window2d.rect(bricks[i][j].x, bricks[i][j].y, brickWidth, brickHeight);
+					window2d.fillStyle = bricks[i][j].color;
+					window2d.fill();
+					window2d.closePath();
+				}
+			}
+		}
+	}
+	
 	function startBoundary() {
 		window2d.beginPath();
 		window2d.rect(canvas.width/2-5,0,10,canvas.height);
@@ -72,7 +106,7 @@
 	function startBall() {
 		window2d.beginPath();
 		window2d.arc(ballX, ballY, ballSize, 0, Math.PI*2);
-		window2d.fillStyle = black;
+		window2d.fillStyle = ballColor;
 		window2d.fill();
 		window2d.closePath();
 	}
@@ -103,6 +137,7 @@
 	
 	function draw() {
 		window2d.clearRect(0, 0, canvas.width, canvas.height);
+		startBricks();
 		startBoundary();
 		startBall();
 		startRightBumper();
