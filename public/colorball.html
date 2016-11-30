@@ -167,9 +167,13 @@
 	function startTimer() {
 		window2d.beginPath();
 		window2d.font = "14px Helvetica";
-		window2d.fillText("Time Left", canvas.width/2 - 25, canvas.height -25);
-		window2d.fillText(timeLeft, canvas.width/2 -25, canvas.height -25);
+		window2d.fillText("Time Left", canvas.width/2 - 40, canvas.height -25);
+		window2d.fillText(timeLeft, canvas.width/2 - 40, canvas.height -9);
 		window2d.closePath();
+	}
+	
+	function changeTimer() {
+		timeLeft -= 1;
 	}
 	
 	function draw() {
@@ -204,7 +208,7 @@
 	}
 	
 	setInterval(draw, 20);
-	setInterval(timeLeft--, 1000);
+	setInterval(changeTimer, 1000);
 	
 	</script>
 	
