@@ -49,11 +49,19 @@
 	var offset = 25;
 	
 	//for loop adapted from MDN game dev tutorial
-	var bricks = [];
+	var bricksLeft = [];
 	for (var i=0; i<numBrickCols; i++) {
-		bricks[i] = [];
+		bricksLeft[i] = [];
 		for (var j=0; j<numBrickRows; j++) {
-			bricks[i][j] = { x: 0, y: 0, visible: true, color: black };
+			bricksLeft[i][j] = { x: 0, y: 0, visible: true, color: black };
+		}
+	}
+	
+	var bricksRight = [];
+	for (var i=0; i<numBrickCols; i++) {
+		bricksRight[i] = [];
+		for (var j=0; j<numBrickRows; j++) {
+			bricksRight[i][j] = { x: 0, y: 0, visible: true, color: black };
 		}
 	}
 	
@@ -80,15 +88,31 @@
 	
 	
 	//startBricks adapted from MDN game dev tutorial
-	function startBricks() {
+	function startLeftBricks() {
 		for (var i = 0; i<numBrickCols; i++) {
 			for (var j = 0; j<numBrickRows; j++){
-				if (bricks[i][j].visible) {
-					bricks[i][j].x = i*(brickWidth+brickPadding) + offset;
-					bricks[i][j].y = j*(brickHeight+brickPadding) + offset;
+				if (bricksLeft[i][j].visible) {
+					bricksLeft[i][j].x = i*(brickWidth+brickPadding) + offset;
+					bricksLeft[i][j].y = j*(brickHeight+brickPadding) + offset;
 					window2d.beginPath();
-					window2d.rect(bricks[i][j].x, bricks[i][j].y, brickWidth, brickHeight);
-					window2d.fillStyle = bricks[i][j].color;
+					window2d.rect(bricksLeft[i][j].x, bricksLeft[i][j].y, brickWidth, brickHeight);
+					window2d.fillStyle = bricksLeft[i][j].color;
+					window2d.fill();
+					window2d.closePath();
+				}
+			}
+		}
+	}
+	
+	function startRightBricks() {
+		for (var i = 0; i<numBrickCols; i++) {
+			for (var j = 0; j<numBrickRows; j++){
+				if (bricksRight[i][j].visible) {
+					bricksRight[i][j].x = window2d.width - (i*(brickWidth+brickPadding) + offset);
+					bricksRight[i][j].y = j*(brickHeight+brickPadding) + offset;
+					window2d.beginPath();
+					window2d.rect(bricksRight[i][j].x, bricksRight[i][j].y, brickWidth, brickHeight);
+					window2d.fillStyle = bricksRight[i][j].color;
 					window2d.fill();
 					window2d.closePath();
 				}
@@ -138,7 +162,7 @@
 	
 	function draw() {
 		window2d.clearRect(0, 0, canvas.width, canvas.height);
-		startBricks();
+		startLeftBricks();
 		startBoundary();
 		startBall();
 		startRightBumper();
