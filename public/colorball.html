@@ -208,20 +208,30 @@
 
 
 		
-		//check for hitting the walls
-		/*if (rightOnly) {
-			
+		//check for hitting the bumper
+		if (rightOnly) {
+			if (ballY > canvas.height - ballSize || ballY < ballSize) {
+				ballSpeedY = -ballSpeedY;
+			}
+			if (ballX > canvas.width - ballSize) {
+				ballSpeedX = -ballSpeedX;
+			}
+			else if (ballX <= canvas.width/2 + ballSize && (ballX < rightBumperLoc || ballX > rightBumperLoc + 70)) {
+				ballSpeedX = -ballSpeedX;
+				points = 0;
+			}
+			else {
+				ballSpeedX = -ballSpeedX;
+			}
 		}
-		else {
-			
-		}*/
 		
-		if (ballX > canvas.width - ballSize || ballX < ballSize) {
+		
+		/*if (ballX > canvas.width - ballSize || ballX < ballSize) {
 			ballSpeedX = -ballSpeedX;
 		}
 		if (ballY > canvas.height - ballSize || ballY < ballSize) {
 			ballSpeedY = -ballSpeedY;
-		}
+		}*/
 		
 		
 		//moving the bumpers
