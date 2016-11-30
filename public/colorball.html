@@ -92,10 +92,10 @@
 		startRightBumper();
 		startLeftBumper();
 		
-		if (ballX > window2d.width - ballSize || ballX < ballSize) {
+		if (ballX > canvas.width - ballSize || ballX < ballSize) {
 			ballSpeedX = -ballSpeedX;
 		}
-		if (ballY > window2d.height - ballSize || ballY < ballSize) {
+		if (ballY > canvas.height - ballSize || ballY < ballSize) {
 			ballSpeedY = -ballSpeedY;
 		}
 		
