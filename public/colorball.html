@@ -20,8 +20,8 @@
 	
 	var ballX = canvas.width/2+50;
 	var ballY = canvas.height/2;
-	var ballSpeedX = -8;
-	var ballSpeedY = -8;
+	var ballSpeedX = -6;
+	var ballSpeedY = -6;
 	
 	
 	var upArrow = false;
@@ -91,6 +91,12 @@
 		startRightBumper();
 		startLeftBumper();
 		
+		if (ballX > window2d.width || ballX < 0) {
+			ballSpeedX = -ballSpeedX;
+		}
+		if (ballY > window2d.height || ballY < 0) {
+			ballSpeedY = -ballSpeedY;
+		}
 		
 		if (upArrow && leftBumperLoc > 6) {
 			rightBumperLoc += 15;
