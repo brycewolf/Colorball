@@ -108,7 +108,7 @@
 		for (var i = 0; i<numBrickCols; i++) {
 			for (var j = 0; j<numBrickRows; j++){
 				if (bricksRight[i][j].visible) {
-					bricksRight[i][j].x = canvas.width - (i*(brickWidth+brickPadding) + offset);
+					bricksRight[i][j].x = canvas.width - 20 - (i*(brickWidth+brickPadding) + offset);
 					bricksRight[i][j].y = j*(brickHeight+brickPadding) + offset;
 					window2d.beginPath();
 					window2d.rect(bricksRight[i][j].x, bricksRight[i][j].y, brickWidth, brickHeight);
