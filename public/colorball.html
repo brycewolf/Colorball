@@ -85,13 +85,13 @@
 		startRightBumper();
 		startLeftBumper();
 		
-		if (upArrow && leftBumperLoc > 0) {
-			rightBumperLoc += 10;
-			leftBumperLoc -= 10;
+		if (upArrow && leftBumperLoc > 1) {
+			rightBumperLoc += 15;
+			leftBumperLoc -= 15;
 		}
-		else if (downArrow && rightBumperLoc > 0) {
-			rightBumperLoc -= 10;
-			leftBumperLoc += 10;
+		else if (downArrow && rightBumperLoc > 1) {
+			rightBumperLoc -= 15;
+			leftBumperLoc += 15;
 		}
 	}
 	
