@@ -20,6 +20,7 @@
 	
 	var ballX = canvas.width/2+50;
 	var ballY = canvas.height/2;
+	var ballSize = 14;
 	var ballSpeedX = -6;
 	var ballSpeedY = -6;
 	
@@ -62,7 +63,7 @@
 	
 	function startBall() {
 		window2d.beginPath();
-		window2d.arc(ballX, ballY, 14, 0, Math.PI*2);
+		window2d.arc(ballX, ballY, ballSize, 0, Math.PI*2);
 		window2d.fillStyle = "#000000";
 		window2d.fill();
 		window2d.closePath();
@@ -91,10 +92,10 @@
 		startRightBumper();
 		startLeftBumper();
 		
-		if (ballX > window2d.width || ballX < 0) {
+		if (ballX > window2d.width - ballSize || ballX < ballSize) {
 			ballSpeedX = -ballSpeedX;
 		}
-		if (ballY > window2d.height || ballY < 0) {
+		if (ballY > window2d.height - ballSize || ballY < ballSize) {
 			ballSpeedY = -ballSpeedY;
 		}
 		
