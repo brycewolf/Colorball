@@ -51,6 +51,9 @@
 	var points = 250;
 	var barrierTime = 0;
 	
+	var bricksRemainRight = 0;
+	var bricksRemainLeft = 0;
+	
 	var barrierOn = true;
 	
 	//for loop adapted from MDN game dev tutorial
@@ -60,6 +63,7 @@
 		for (var j=0; j<numBrickRows; j++) {
 			//the random hex generator snippet was created by Paul Irish https://www.paulirish.com/2009/random-hex-color-code-snippets/
 			bricksLeft[i][j] = { x: 0, y: 0, visible: true, color: "#"+Math.floor(Math.random()*16777215).toString(16) };
+			bricksRemainLeft += 1;
 		}
 	}
 	
@@ -69,6 +73,7 @@
 		for (var j=0; j<numBrickRows; j++) {
 			//the random hex generator snippet was created by Paul Irish https://www.paulirish.com/2009/random-hex-color-code-snippets/
 			bricksRight[i][j] = { x: 0, y: 0, visible: true, color: "#"+Math.floor(Math.random()*16777215).toString(16) };
+			bricksRemainRight += 1;
 		}
 	}
 	
@@ -277,8 +282,20 @@
 		window2d.closePath();
 	}
 	
+	function displayScore() {
+		window2d.beginPath();
+		window2d.font = "40px Helvetica";
+		window2d.fillText("POINTS: "+points, canvas.width/2 - 100, canvas.height/2);
+	}
+	
+	function displayGameOver() {
+		window2d.beginPath();
+		window2d.font = "40px Helvetica";
+		window2d.fillText("GAME OVER!", canvas.width/2 - 100, canvas.height/2);
+	}
+	
 	function changeTimer() {
-		if (timeLeft >= 1) {
+		if (timeLeft >= 1 && (bricksRemainRight !== 0 || bricksRemainLeft !== 0) {
 			timeLeft -= 1;	
 			if (points >= 1) {
 				points -= 1;	
@@ -289,9 +306,12 @@
 			barrierTime += 1;
 		}
 		else {
-			window2d.beginPath();
-			window2d.font = "40px Helvetica";
-			window2d.fillText("POINTS: "+points, canvas.width/2 - 100, canvas.height/2);
+			if (bricksRemainRight > 0 || bricksRemainLeft > 0) {
+				displayGameOver();
+			}
+			else {
+				displayScore();
+			}
 		}
 	}
 	
