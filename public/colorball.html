@@ -1,4 +1,4 @@
-/*globals i */
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,6 +45,7 @@
 	var numBrickRows = 12;
 	var brickWidth = 20;
 	var brickHeight = 50;
+	var brickPadding = 10;
 	var offset = 25;
 	
 	//for loop adapted from MDN game dev tutorial
@@ -83,8 +84,8 @@
 		for (var i = 0; i<numBrickCols; i++) {
 			for (var j = 0; j<numBrickCols; j++){
 				if (bricks[i][j].visible) {
-					bricks[i][j].x = i*brickWidth + offset;
-					bricks[i][j].y = j*brickHeight + offset;
+					bricks[i][j].x = i*(brickWidth+brickPadding) + offset;
+					bricks[i][j].y = j*(brickHeight+brickPadding) + offset;
 					window2d.beginPath();
 					window2d.rect(bricks[i][j].x, bricks[i][j].y, brickWidth, brickHeight);
 					window2d.fillStyle = bricks[i][j].color;
