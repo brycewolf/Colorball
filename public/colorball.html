@@ -88,12 +88,19 @@
 		window2d.closePath();
 	}
 	
+	function startPointCounter() {
+		window2d.beginPath();
+		window2d.fillText("Points", canvas.width - 25, canvas.height - 25);
+		window2d.closePath();
+	}
+	
 	function draw() {
 		window2d.clearRect(0, 0, canvas.width, canvas.height);
 		startBoundary();
 		startBall();
 		startRightBumper();
 		startLeftBumper();
+		startPointCounter();
 		
 		if (ballX > canvas.width - ballSize || ballX < ballSize) {
 			ballSpeedX = -ballSpeedX;
@@ -102,11 +109,11 @@
 			ballSpeedY = -ballSpeedY;
 		}
 		
-		if (upArrow && leftBumperLoc > 6) {
+		if (upArrow && leftBumperLoc > 7) {
 			rightBumperLoc += bumperSpeedR;
 			leftBumperLoc -= bumperSpeedL;
 		}
-		else if (downArrow && rightBumperLoc > 6) {
+		else if (downArrow && rightBumperLoc > 7) {
 			rightBumperLoc -= bumperSpeedR;
 			leftBumperLoc += bumperSpeedL;
 		}
