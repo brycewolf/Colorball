@@ -48,6 +48,8 @@
 	var brickPadding = 10;
 	var offset = 25;
 	
+	var timeLeft = 250;
+	
 	//for loop adapted from MDN game dev tutorial
 	var bricksLeft = [];
 	for (var i=0; i<numBrickCols; i++) {
@@ -162,6 +164,14 @@
 		window2d.closePath();
 	}
 	
+	function startTimer() {
+		window2d.beginPath();
+		window2d.font = "14px Helvetica";
+		window2d.fillText("Time Left", canvas.width/2 - 25, canvas.height -25);
+		window2d.fillText(timeLeft, canvas.width/2 -25, canvas.height -25);
+		window2d.closePath();
+	}
+	
 	function draw() {
 		window2d.clearRect(0, 0, canvas.width, canvas.height);
 		startLeftBricks();
@@ -171,6 +181,7 @@
 		startRightBumper();
 		startLeftBumper();
 		startPointCounter();
+		startTimer();
 		
 		if (ballX > canvas.width - ballSize || ballX < ballSize) {
 			ballSpeedX = -ballSpeedX;
@@ -193,6 +204,7 @@
 	}
 	
 	setInterval(draw, 20);
+	setInterval(timeLeft--, 1000);
 	
 	</script>
 	
