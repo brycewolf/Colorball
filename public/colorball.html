@@ -18,6 +18,9 @@
 	var canvas = document.getElementById("gameWindow");
 	var window2d = canvas.getContext("2d");
 	
+	var bumperSpeedR = 15;
+	var bumperSpeedL = -15;
+	
 	var ballX = canvas.width/2+50;
 	var ballY = canvas.height/2;
 	var ballSize = 14;
@@ -99,13 +102,13 @@
 			ballSpeedY = -ballSpeedY;
 		}
 		
-		if (upArrow && leftBumperLoc > 21) {
-			rightBumperLoc += 15;
-			leftBumperLoc -= 15;
+		if (upArrow && leftBumperLoc > bumperSpeedL + 1) {
+			rightBumperLoc += bumperSpeedR;
+			leftBumperLoc += bumperSpeedL;
 		}
-		else if (downArrow && rightBumperLoc > 21) {
-			rightBumperLoc -= 15;
-			leftBumperLoc += 15;
+		else if (downArrow && rightBumperLoc > bumperSpeedR + 1) {
+			rightBumperLoc += bumperSpeedR;
+			leftBumperLoc += bumperSpeedL;
 		}
 		
 		ballX += ballSpeedX;
