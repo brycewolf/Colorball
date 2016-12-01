@@ -17,6 +17,19 @@
 	<script>
 	var canvas = document.getElementById("gameWindow");
 	var window2d = canvas.getContext("2d");
+	var hoopWidth = 150;
+	var barWidth = 2;
+	
+	var hoopLoc = canvas.width/2 - hoopWidth/2;
+	var leftBarLoc = canvas.width/2 - hoopWidth/2;
+	var rightBarLoc = canvas.width/2 + hoopWidth/2;
+	
+	var ballX = canvas.width/2+50;
+	var ballY = canvas.height/2;
+	var ballSize = 14;
+	var ballSpeedX = 6;
+	var ballSpeedY = 6;
+	var hoopSpeed = 7;
 	
 	var red = "#ff0000";
 	var black = "#000000";
@@ -24,9 +37,6 @@
 	
 	var leftArrow = false;
 	var rightArrow = false;
-	
-	var hoopWidth = 150;
-	var barWidth = 2;
 	
 	document.addEventListener("keydown", pressKey, false);
 	document.addEventListener("keyup", unpressKey, false);
@@ -59,7 +69,7 @@
 	
 	function startHoop() {
 		window2d.beginPath();
-		window2d.rect(canvas.width/2 - hoopWidth/2, canvas.height/2-5,hoopWidth,10);
+		window2d.rect(hoopLoc, canvas.height/2-5,hoopWidth,10);
 		window2d.fillStyle = invisible;
 		window2d.fill();
 		window2d.closePath();
@@ -67,9 +77,17 @@
 	
 	function startHoopBars() {
 		window2d.beginPath();
-		window2d.rect(canvas.width/2 - hoopWidth/2, canvas.height/2-10,barWidth,20);
-		window2d.rect(canvas.width/2 + hoopWidth/2, canvas.height/2-10,barWidth,20);
+		window2d.rect(leftBarLoc, canvas.height/2-10,barWidth,20);
+		window2d.rect(rightBarLoc, canvas.height/2-10,barWidth,20);
 		window2d.fillStyle = red;
+		window2d.fill();
+		window2d.closePath();
+	}
+	
+	function startBall() {
+		window2d.beginPath();
+		window2d.arc(ballX, ballY, ballSize, 0, Math.PI*2);
+		window2d.fillStyle = black;
 		window2d.fill();
 		window2d.closePath();
 	}
@@ -78,6 +96,21 @@
 		startBoundary();
 		startHoop();
 		startHoopBars();
+		startBall();
+		
+		if (leftArrow && leftBarLoc > 0) {
+			leftBarLoc -= hoopSpeed;
+			rightBarLoc -= hoopSpeed;
+			hoopLoc -= hoopSpeed;
+		}
+		else if (rightArrow && rightBarLoc > canvas.width) {
+			leftBarLoc += hoopSpeed;
+			rightBarLoc += hoopSpeed;
+			hoopLoc += hoopSpeed;
+		}
+		
+		ballX += ballSpeedX;
+		ballY += ballSpeedY;
 	}
 	
 	setInterval(draw, 20);
