@@ -18,7 +18,57 @@
 	var canvas = document.getElementById("gameWindow");
 	var window2d = canvas.getContext("2d");
 	
-		
+	var invisible = "#eee";
+	
+	var leftArrow = false;
+	var rightArrow = false;
+	
+	var hoopWidth = 150;
+	
+	document.addEventListener("keydown", pressKey, false);
+	document.addEventListener("keyup", unpressKey, false);
+	
+	function pressKey(e) {
+		if (e.keyCode === 37) {
+			leftArrow = true;
+		}
+		else if (e.keyCode === 39) {
+			rightArrow = true;
+		}
+	}
+	
+	function unpressKey(e) {
+		if (e.keyCode === 37) {
+			leftArrow = false;
+		}
+		else if (e.keyCode === 39) {
+			rightArrow = false;
+		}
+	}
+	
+	function startBoundary() {
+		window2d.beginPath();
+		window2d.rect(0,canvas.height/2-5,canvas.width,10);
+		window2d.fillStyle = red;
+		window2d.fill();
+		window2d.closePath();
+	}
+	
+	function startHoop() {
+		window2d.beginPath();
+		window2d.rect(0,canvas.height/2-5,hoopWidth,10);
+		window2d.fillStyle = invisible;
+		window2d.fill();
+		window2d.closePath();
+	}
+	
+	function draw() {
+		startBoundary();
+		startHoop();
+	}
+	
+	setInterval(draw, 20);
+	
 	</script>
 	
 </body>
