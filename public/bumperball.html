@@ -26,6 +26,7 @@
 	var rightArrow = false;
 	
 	var hoopWidth = 150;
+	var barWidth = 2;
 	
 	document.addEventListener("keydown", pressKey, false);
 	document.addEventListener("keyup", unpressKey, false);
@@ -58,8 +59,12 @@
 	
 	function startHoop() {
 		window2d.beginPath();
-		window2d.rect(0,canvas.height/2-5,hoopWidth,10);
+		window2d.rect(canvas.width/2 - hoopWidth/2, canvas.height/2-5,hoopWidth,10);
 		window2d.fillStyle = invisible;
+		window2d.fill();
+		window2d.rect(canvas.width/2 - hoopWidth/2, canvas.height/2-10,barWidth,20);
+		window2d.rect(canvas.width/2 + hoopWidth/2, canvas.height/2-10,barWidth,20);
+		window2d.fillStyle = red;
 		window2d.fill();
 		window2d.closePath();
 	}
