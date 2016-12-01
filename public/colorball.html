@@ -289,7 +289,7 @@
 		clearInterval(timerInterval);
 		window2d.beginPath();
 		window2d.font = "40px Helvetica";
-		window2d.fillText("POINTS: "+points, canvas.width/2 - 100, canvas.height/2);
+		window2d.fillText("POINTS\n"+points, canvas.width/2 - 50, canvas.height/2);
 	}
 	
 	function displayGameOver() {
@@ -297,11 +297,11 @@
 		clearInterval(timerInterval);
 		window2d.beginPath();
 		window2d.font = "40px Helvetica";
-		window2d.fillText("GAME OVER!", canvas.width/2 - 100, canvas.height/2);
+		window2d.fillText("GAME\nOVER!", canvas.width/2 - 50, canvas.height/2);
 	}
 	
 	function changeTimer() {
-		if (timeLeft >= 1 && (bricksRemainRight <= 0 || bricksRemainLeft <= 0)) {
+		if (timeLeft >= 1 && (bricksRemainRight > 0 || bricksRemainLeft > 0)) {
 			timeLeft -= 1;	
 			if (points >= 1) {
 				points -= 1;	
