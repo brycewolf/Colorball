@@ -287,17 +287,21 @@
 	function displayScore() {
 		clearInterval(drawInterval);
 		clearInterval(timerInterval);
+		window2d.clearRect(0, 0, canvas.width, canvas.height);
 		window2d.beginPath();
 		window2d.font = "40px Helvetica";
-		window2d.fillText("POINTS\n"+points, canvas.width/2 - 50, canvas.height/2);
+		window2d.textAlight = "center";
+		window2d.fillText("POINTS: "+points, 800, 305);
 	}
 	
 	function displayGameOver() {
 		clearInterval(drawInterval);
 		clearInterval(timerInterval);
+		window2d.clearRect(0, 0, canvas.width, canvas.height);
 		window2d.beginPath();
 		window2d.font = "40px Helvetica";
-		window2d.fillText("GAME\nOVER!", canvas.width/2 - 50, canvas.height/2);
+		window2d.textAlight = "center";
+		window2d.fillText("GAME OVER!", 800, 305);
 	}
 	
 	function changeTimer() {
