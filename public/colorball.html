@@ -19,6 +19,7 @@
 	var canvas = document.getElementById("gameWindow");
 	var window2d = canvas.getContext("2d");
 	
+	var bumperHeight = 110;
 	var bumperSpeedR = 15;
 	var bumperSpeedL = 15;
 	
@@ -38,7 +39,6 @@
 	
 	var rightBumperLoc = canvas.height/2-35;
 	var leftBumperLoc = canvas.height/2-35;
-	var bumperHeight = 70;
 	
 	var numBrickCols = 3;
 	var numBrickRows = 8;
@@ -196,6 +196,17 @@
 					ballSpeedX = -ballSpeedX;
 				}
 				else if (ballX > canvas.width/2 - ballSize - 5 && (ballY > leftBumperLoc && ballY < leftBumperLoc + bumperHeight)) {
+					if (ballY < leftBumperLoc + bumperHeight/2) {
+						if (ballSpeedY > 0) {
+							ballSpeedY = -ballSpeedY;
+						}
+					}
+
+					else {
+						if (ballSpeedY < 0) {
+							ballSpeedY = -ballSpeedY;
+						}
+					}
 					ballSpeedX = -ballSpeedX;
 				}
 			
@@ -209,6 +220,17 @@
 					ballSpeedX = -ballSpeedX;
 				}
 				else if (ballX > canvas.width/2 - ballSize - 5 && (ballY > leftBumperLoc && ballY < leftBumperLoc + bumperHeight)) {
+					if (ballY < leftBumperLoc + bumperHeight/2) {
+						if (ballSpeedY > 0) {
+							ballSpeedY = -ballSpeedY;
+						}
+					}
+
+					else {
+						if (ballSpeedY < 0) {
+							ballSpeedY = -ballSpeedY;
+						}
+					}
 					ballSpeedX = -ballSpeedX;
 				}
 				
