@@ -138,6 +138,16 @@
 					ballSpeedX = -ballSpeedX;
 				}
 				else if (ballX < canvas.width/2 + ballSize + 5 && (ballY > rightBumperLoc && ballY < rightBumperLoc + bumperHeight)) {
+					//if the ball hits the top half of the bumper, send it back up
+					if (ballY < rightBumperLoc + bumperHeight/2) {
+						if (ballSpeedY > 0) {
+							ballSpeedY = -ballSpeedY;
+					}
+					else {
+						if (ballSpeedY < 0) {
+							ballSpeedY = -ballSpeedY;
+						}
+					}
 					ballSpeedX = -ballSpeedX;
 				}
 			
@@ -151,6 +161,15 @@
 					ballSpeedX = -ballSpeedX;
 				}
 				else if (ballX < canvas.width/2 + ballSize + 5 && (ballY > rightBumperLoc && ballY < rightBumperLoc + bumperHeight)) {
+					if (ballY < rightBumperLoc + bumperHeight/2) {
+						if (ballSpeedY > 0) {
+							ballSpeedY = -ballSpeedY;
+					}
+					else {
+						if (ballSpeedY < 0) {
+							ballSpeedY = -ballSpeedY;
+						}
+					}
 					ballSpeedX = -ballSpeedX;
 				}
 				
