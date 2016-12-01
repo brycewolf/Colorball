@@ -170,12 +170,12 @@
 		wallHit();
 		displayScore();
 		
-		if (leftArrow && leftBarLoc > 5) {
+		if (leftArrow && leftBarLoc + hoopSpeed > 5) {
 			leftBarLoc -= hoopSpeed;
 			rightBarLoc -= hoopSpeed;
 			hoopLoc -= hoopSpeed;
 		}
-		else if (rightArrow && rightBarLoc < canvas.width - 5) {
+		else if (rightArrow && rightBarLoc + hoopSpeed < canvas.width - 5) {
 			leftBarLoc += hoopSpeed;
 			rightBarLoc += hoopSpeed;
 			hoopLoc += hoopSpeed;
