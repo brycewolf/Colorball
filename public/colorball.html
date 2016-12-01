@@ -47,7 +47,7 @@
 	var brickPadding = 10;
 	var offset = 25;
 	
-	var timeLeft = 250;
+	var timeLeft = 10;
 	var points = 250;
 	var barrierTime = 0;
 	
@@ -291,7 +291,7 @@
 		window2d.beginPath();
 		window2d.font = "40px Helvetica";
 		window2d.textAlight = "center";
-		window2d.fillText("POINTS: "+points, 800, 305);
+		window2d.fillText("POINTS: "+points, 400, 305);
 	}
 	
 	function displayGameOver() {
@@ -301,7 +301,7 @@
 		window2d.beginPath();
 		window2d.font = "40px Helvetica";
 		window2d.textAlight = "center";
-		window2d.fillText("GAME OVER!", 800, 305);
+		window2d.fillText("GAME OVER!", 400, 305);
 	}
 	
 	function changeTimer() {
