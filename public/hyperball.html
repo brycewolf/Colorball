@@ -181,12 +181,12 @@
 			rightBarLoc -= Lspeed;
 			hoopLoc -= Lspeed;
 		}
-		else if (rightArrow && rightBarLoc + hoopSpeed < canvas.width - 5) {
+		else if (rightArrow && rightBarLoc + hoopSpeed < canvas.width - barWidth) {
 			leftBarLoc += hoopSpeed;
 			rightBarLoc += hoopSpeed;
 			hoopLoc += hoopSpeed;
 		}
-		else if (rightArrow && rightBarLoc + hoopSpeed > canvas.width - 5) {
+		else if (rightArrow && rightBarLoc + hoopSpeed > canvas.width - barWidth) {
 			var Rspeed = canvas.width - rightBarLoc - 5;
 			rightBarLoc += Rspeed;
 			leftBarLoc += Rspeed;
