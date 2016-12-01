@@ -170,15 +170,27 @@
 		wallHit();
 		displayScore();
 		
-		if (leftArrow && leftBarLoc - hoopSpeed > 0) {
+		if (leftArrow && leftBarLoc > hoopSpeed) {
 			leftBarLoc -= hoopSpeed;
 			rightBarLoc -= hoopSpeed;
 			hoopLoc -= hoopSpeed;
+		}
+		else if (leftArrow && leftBarLoc < hoopSpeed) {
+			var Lspeed = leftBarLoc;
+			leftBarLoc -= Lspeed;
+			rightBarLoc -= Lspeed;
+			hoopLoc -= Lspeed;
 		}
 		else if (rightArrow && rightBarLoc + hoopSpeed < canvas.width) {
 			leftBarLoc += hoopSpeed;
 			rightBarLoc += hoopSpeed;
 			hoopLoc += hoopSpeed;
+		}
+		else if (rightArrow && rightBarLoc + hoopSpeed > canvas.width) {
+			var Rspeed = canvas.width -rightBarLoc;
+			rightBarLoc += Rspeed;
+			leftBarLoc += Rspeed;
+			hoopLoc += Rspeed;
 		}
 		
 		ballX += ballSpeedX;
