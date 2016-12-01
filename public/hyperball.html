@@ -10,7 +10,7 @@
 </head>
 <body>
 	
-	<h1 id="message">BUMPERBALL</h1>
+	<h1 id="message">HYPERBALL</h1>
 	
 	<canvas id="gameWindow" width="800" height="610" style="border:5px solid #000000;"></canvas>
 	
@@ -29,7 +29,7 @@
 	var ballSize = 14;
 	var ballSpeedX = 1;
 	var ballSpeedY = 1;
-	var hoopSpeed = 15;
+	var hoopSpeed = 10;
 	
 	var red = "#ff0000";
 	var black = "#000000";
@@ -72,20 +72,20 @@
 		//X
 		if (ballX < ballSize) {
 			if (ballSpeedX < 0) {
-				ballSpeedX -= 0.25;
+				ballSpeedX -= 0.5;
 			}
 			else {
-				ballSpeedX += 0.25;
+				ballSpeedX += 0.5;
 			}
 			ballSpeedX = -ballSpeedX;
 			points += 1;
 		}
 		else if (ballX > canvas.width - ballSize) {
 			if (ballSpeedX < 0) {
-				ballSpeedX -= 0.25;
+				ballSpeedX -= 0.5;
 			}
 			else {
-				ballSpeedX += 0.25;
+				ballSpeedX += 0.5;
 			}
 			ballSpeedX = -ballSpeedX;
 			points += 1;
@@ -93,10 +93,10 @@
 		//Y
 		if (ballY > canvas.height - ballSize || ballY < ballSize) {
 			if (ballSpeedY < 0) {
-				ballSpeedY -= 0.25;
+				ballSpeedY -= 0.5;
 			}
 			else {
-				ballSpeedY += 0.25;
+				ballSpeedY += 0.5;
 			}
 			ballSpeedY = -ballSpeedY;
 			points += 1;
@@ -139,14 +139,21 @@
 	
 	function displayGameOver() {
 		clearInterval(drawInterval);
-		//window2d.clearRect(0, 0, canvas.width, canvas.height);
 		window2d.beginPath();
 		window2d.font = "40px Helvetica";
 		window2d.textAlign = "center";
-		window2d.fillText("GAME OVER", 400, 305);
+		window2d.fillText("GAME OVER", 400, 200);
 		window2d.closePath();
 	}
 	
+	function displayScore() {
+		window2d.beginPath();
+		window2d.font = "40px Helvetica";
+		window2d.textAlign = "center";
+		window2d.fillText("POINTS: "+points, 400, 305);
+		window2d.closePath();
+	}
+		
 	function draw() {
 		window2d.clearRect(0, 0, canvas.width, canvas.height);
 		startBoundary();
@@ -154,6 +161,7 @@
 		startHoopBars();
 		startBall();
 		wallHit();
+		displayScore();
 		
 		if (leftArrow && leftBarLoc > 5) {
 			leftBarLoc -= hoopSpeed;
