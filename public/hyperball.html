@@ -71,32 +71,35 @@
 		}
 		//X
 		if (ballX < ballSize) {
+			ballColor = "#"+Math.floor(Math.random()*16777215).toString(16);
 			if (ballSpeedX < 0) {
-				ballSpeedX -= 0.5;
+				ballSpeedX -= 0.35;
 			}
 			else {
-				ballSpeedX += 0.5;
+				ballSpeedX += 0.35;
 			}
 			ballSpeedX = -ballSpeedX;
 			points += 1;
 		}
 		else if (ballX > canvas.width - ballSize) {
+			ballColor = "#"+Math.floor(Math.random()*16777215).toString(16);
 			if (ballSpeedX < 0) {
-				ballSpeedX -= 0.5;
+				ballSpeedX -= 0.35;
 			}
 			else {
-				ballSpeedX += 0.5;
+				ballSpeedX += 0.35;
 			}
 			ballSpeedX = -ballSpeedX;
 			points += 1;
 		}
 		//Y
 		if (ballY > canvas.height - ballSize || ballY < ballSize) {
+			ballColor = "#"+Math.floor(Math.random()*16777215).toString(16);
 			if (ballSpeedY < 0) {
-				ballSpeedY -= 0.5;
+				ballSpeedY -= 0.35;
 			}
 			else {
-				ballSpeedY += 0.5;
+				ballSpeedY += 0.35;
 			}
 			ballSpeedY = -ballSpeedY;
 			points += 1;
@@ -132,7 +135,7 @@
 	function startBall() {
 		window2d.beginPath();
 		window2d.arc(ballX, ballY, ballSize, 0, Math.PI*2);
-		window2d.fillStyle = black;
+		window2d.fillStyle = ballColor;
 		window2d.fill();
 		window2d.closePath();
 	}
