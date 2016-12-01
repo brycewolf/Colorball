@@ -27,8 +27,8 @@
 	var ballX = canvas.width/2+50;
 	var ballY = canvas.height/2;
 	var ballSize = 14;
-	var ballSpeedX = 6;
-	var ballSpeedY = 6;
+	var ballSpeedX = 1;
+	var ballSpeedY = 1;
 	var hoopSpeed = 15;
 	
 	var red = "#ff0000";
@@ -99,12 +99,12 @@
 		startHoopBars();
 		startBall();
 		
-		if (leftArrow && leftBarLoc > 0) {
+		if (leftArrow && leftBarLoc > 5) {
 			leftBarLoc -= hoopSpeed;
 			rightBarLoc -= hoopSpeed;
 			hoopLoc -= hoopSpeed;
 		}
-		else if (rightArrow && rightBarLoc < canvas.width) {
+		else if (rightArrow && rightBarLoc < canvas.width - 5) {
 			leftBarLoc += hoopSpeed;
 			rightBarLoc += hoopSpeed;
 			hoopLoc += hoopSpeed;
