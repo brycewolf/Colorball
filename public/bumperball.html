@@ -93,6 +93,7 @@
 	}
 	
 	function draw() {
+		window2d.clearRect(0, 0, canvas.width, canvas.height);
 		startBoundary();
 		startHoop();
 		startHoopBars();
@@ -103,7 +104,7 @@
 			rightBarLoc -= hoopSpeed;
 			hoopLoc -= hoopSpeed;
 		}
-		else if (rightArrow && rightBarLoc > canvas.width) {
+		else if (rightArrow && rightBarLoc < canvas.width) {
 			leftBarLoc += hoopSpeed;
 			rightBarLoc += hoopSpeed;
 			hoopLoc += hoopSpeed;
