@@ -62,6 +62,11 @@
 		window2d.rect(canvas.width/2 - hoopWidth/2, canvas.height/2-5,hoopWidth,10);
 		window2d.fillStyle = invisible;
 		window2d.fill();
+		window2d.closePath();
+	}
+	
+	function startHoopBars() {
+		window2d.beginPath();
 		window2d.rect(canvas.width/2 - hoopWidth/2, canvas.height/2-10,barWidth,20);
 		window2d.rect(canvas.width/2 + hoopWidth/2, canvas.height/2-10,barWidth,20);
 		window2d.fillStyle = red;
@@ -72,6 +77,7 @@
 	function draw() {
 		startBoundary();
 		startHoop();
+		startHoopBars();
 	}
 	
 	setInterval(draw, 20);
