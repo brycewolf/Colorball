@@ -29,7 +29,7 @@
 	var ballSize = 14;
 	var ballSpeedX = 1;
 	var ballSpeedY = 1;
-	var hoopSpeed = 10;
+	var hoopSpeed = 7;
 	
 	var red = "#ff0000";
 	var black = "#000000";
@@ -63,6 +63,7 @@
 	}
 	
 	function wallHit() {
+		hoopSpeed += 0.1;
 		if (ballY < canvas.height/2+5+ballSize && ballY > canvas.height/2-5-ballSize) {
 			//it's in the barrier range
 			if (ballX > rightBarLoc || ballX < leftBarLoc) {
