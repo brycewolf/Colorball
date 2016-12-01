@@ -64,7 +64,7 @@
 	function wallHit() {
 		if (ballY < canvas.height/2+5+ballSize && ballY > canvas.height/2-5-ballSize) {
 			//it's in the barrier range
-			if (ballX > rightBarLoc && ballX < leftBarLoc) {
+			if (ballX > rightBarLoc || ballX < leftBarLoc) {
 				//hit the barrier, game over
 				displayGameOver();
 			}
