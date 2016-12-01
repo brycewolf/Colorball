@@ -170,7 +170,7 @@
 		wallHit();
 		displayScore();
 		
-		if (leftArrow && leftBarLoc + hoopSpeed > 0) {
+		if (leftArrow && leftBarLoc - hoopSpeed > 0) {
 			leftBarLoc -= hoopSpeed;
 			rightBarLoc -= hoopSpeed;
 			hoopLoc -= hoopSpeed;
