@@ -40,15 +40,15 @@
 	var leftBumperLoc = canvas.height/2-35;
 	var bumperHeight = 70;
 	
-	var numBrickCols = 4;
+	var numBrickCols = 3;
 	var numBrickRows = 8;
-	var brickWidth = 15;
+	var brickWidth = 25;
 	var brickHeight = 60;
 	var brickPadding = 10;
 	var offset = 25;
 	
 	var timeLeft = 10;
-	var points = 250;
+	var points = 500;
 	var barrierTime = 0;
 	
 	var bricksRemainRight = 0;
@@ -134,7 +134,7 @@
 					ballSpeedX = -ballSpeedX;
 				}
 				else if (ballX < canvas.width/2 + ballSize + 5 && (ballY < rightBumperLoc || ballY > rightBumperLoc + bumperHeight)) {
-					points = points - 10;
+					points = points - 25;
 					ballSpeedX = -ballSpeedX;
 				}
 				else if (ballX < canvas.width/2 + ballSize + 5 && (ballY > rightBumperLoc && ballY < rightBumperLoc + bumperHeight)) {
@@ -169,7 +169,7 @@
 					ballSpeedX = -ballSpeedX;
 				}
 				else if (ballX > canvas.width/2 - ballSize - 5 && (ballY < leftBumperLoc || ballY > leftBumperLoc + bumperHeight)) {
-					points = points - 10;
+					points = points - 25;
 					ballSpeedX = -ballSpeedX;
 				}
 				else if (ballX > canvas.width/2 - ballSize - 5 && (ballY > leftBumperLoc && ballY < leftBumperLoc + bumperHeight)) {
@@ -302,15 +302,15 @@
 		window2d.beginPath();
 		window2d.font = "40px Helvetica";
 		window2d.textAlign = "center";
-		window2d.fillText("GAME OVER!", 400, 305);
+		window2d.fillText("GAME OVER", 400, 305);
 		window2d.closePath();
 	}
 	
 	function changeTimer() {
 		if (timeLeft >= 1 && (bricksRemainRight > 0 || bricksRemainLeft > 0)) {
 			timeLeft -= 1;	
-			if (points >= 1) {
-				points -= 1;	
+			if (points >= 2) {
+				points -= 2;	
 			}
 			if (barrierTime === 25) {
 				barrierTime = 0;
