@@ -74,10 +74,10 @@
 		if (ballX < ballSize) {
 			ballColor = "#"+Math.floor(Math.random()*16777215).toString(16);
 			if (ballSpeedX < 0) {
-				ballSpeedX -= 0.35;
+				ballSpeedX -= Math.random() * 0.5;
 			}
 			else {
-				ballSpeedX += 0.35;
+				ballSpeedX += Math.random() * 0.5;
 			}
 			ballSpeedX = -ballSpeedX;
 			points += 1;
@@ -85,10 +85,10 @@
 		else if (ballX > canvas.width - ballSize) {
 			ballColor = "#"+Math.floor(Math.random()*16777215).toString(16);
 			if (ballSpeedX < 0) {
-				ballSpeedX -= 0.35;
+				ballSpeedX -= Math.random() * 0.5;
 			}
 			else {
-				ballSpeedX += 0.35;
+				ballSpeedX += Math.random() * 0.5;
 			}
 			ballSpeedX = -ballSpeedX;
 			points += 1;
@@ -97,10 +97,10 @@
 		if (ballY > canvas.height - ballSize || ballY < ballSize) {
 			ballColor = "#"+Math.floor(Math.random()*16777215).toString(16);
 			if (ballSpeedY < 0) {
-				ballSpeedY -= 0.35;
+				ballSpeedY -= Math.random() * 0.5;
 			}
 			else {
-				ballSpeedY += 0.35;
+				ballSpeedY += Math.random() * 0.5;
 			}
 			ballSpeedY = -ballSpeedY;
 			points += 1;
