@@ -63,7 +63,6 @@
 	}
 	
 	function wallHit() {
-		hoopSpeed += 0.1;
 		if (ballY < canvas.height/2+5+ballSize && ballY > canvas.height/2-5-ballSize) {
 			//it's in the barrier range
 			if (ballX > rightBarLoc || ballX < leftBarLoc) {
@@ -80,6 +79,7 @@
 			else {
 				ballSpeedX += Math.random() * 0.5;
 			}
+			hoopSpeed += 0.1;
 			ballSpeedX = -ballSpeedX;
 			points += 1;
 		}
@@ -91,6 +91,7 @@
 			else {
 				ballSpeedX += Math.random() * 0.5;
 			}
+			hoopSpeed += 0.1;
 			ballSpeedX = -ballSpeedX;
 			points += 1;
 		}
@@ -103,6 +104,7 @@
 			else {
 				ballSpeedY += Math.random() * 0.5;
 			}
+			hoopSpeed += 0.1;
 			ballSpeedY = -ballSpeedY;
 			points += 1;
 		}
