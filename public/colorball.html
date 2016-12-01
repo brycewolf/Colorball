@@ -283,19 +283,23 @@
 	}
 	
 	function displayScore() {
+		clearInterval(drawInterval);
+		clearInterval(timerInterval);
 		window2d.beginPath();
 		window2d.font = "40px Helvetica";
 		window2d.fillText("POINTS: "+points, canvas.width/2 - 100, canvas.height/2);
 	}
 	
 	function displayGameOver() {
+		clearInterval(drawInterval);
+		clearInterval(timerInterval);
 		window2d.beginPath();
 		window2d.font = "40px Helvetica";
 		window2d.fillText("GAME OVER!", canvas.width/2 - 100, canvas.height/2);
 	}
 	
 	function changeTimer() {
-		if (timeLeft >= 1 && (bricksRemainRight !== 0 || bricksRemainLeft !== 0)) {
+		if (timeLeft >= 1 && (bricksRemainRight <= 0 || bricksRemainLeft <= 0)) {
 			timeLeft -= 1;	
 			if (points >= 1) {
 				points -= 1;	
@@ -330,108 +334,6 @@
 		bumperHitRight();
 		bumperHitLeft();
 		
-		//check for hitting the bricks (RIGHT)
-		/*for (var i = 0; i<numBrickCols; i++) {
-			for (var j = 0; j<numBrickRows; j++) {
-				if (ballX >= bricksRight[i][j].x - brickWidth && ballY >= bricksRight[i][j].y && ballY <= bricksRight[i][j].y+brickHeight && bricksRight[i][j].visible) {
-					bricksRight[i][j].visible = false;
-					points = points + 10;
-					ballSpeedX = -ballSpeedX;
-					ballColor = bricksRight[i][j].color;
-				}
-			}
-		}
-
-		//check for hitting the bricks (LEFT)
-		for (var i = 0; i<numBrickCols; i++) {
-			for (var j = 0; j<numBrickRows; j++) {
-				if (ballX - ballSize <= bricksLeft[i][j].x + brickWidth && ballY >= bricksLeft[i][j].y && ballY <= bricksLeft[i][j].y+brickHeight && bricksLeft[i][j].visible) {
-					bricksLeft[i][j].visible = false;
-					points = points + 10;
-					ballSpeedX = -ballSpeedX;
-					ballColor = bricksLeft[i][j].color;
-				}
-			}
-		}
-	
-
-		//check for hitting the bumper (RIGHT)
-		if (ballX >= canvas.width/2) {
-			//X
-			if (barrierOn) {
-				if (ballX > canvas.width - ballSize) {
-					ballSpeedX = -ballSpeedX;
-				}
-				else if (ballX < canvas.width/2 + ballSize + 5 && (ballY < rightBumperLoc || ballY > rightBumperLoc + bumperHeight)) {
-					points = points - 10;
-					ballSpeedX = -ballSpeedX;
-				}
-				else if (ballX < canvas.width/2 + ballSize + 5 && (ballY > rightBumperLoc && ballY < rightBumperLoc + bumperHeight)) {
-					ballSpeedX = -ballSpeedX;
-				}
-			
-				//Y
-				if (ballY > canvas.height - ballSize || ballY < ballSize) {
-					ballSpeedY = -ballSpeedY;
-				}
-			}
-			else {
-				if (ballX > canvas.width - ballSize) {
-					ballSpeedX = -ballSpeedX;
-				}
-				else if (ballX < canvas.width/2 + ballSize + 5 && (ballY > rightBumperLoc && ballY < rightBumperLoc + bumperHeight)) {
-					ballSpeedX = -ballSpeedX;
-				}
-				
-				if (ballY > canvas.height - ballSize || ballY < ballSize) {
-					ballSpeedY = -ballSpeedY;
-				}
-			}
-		}
-		
-		//check for hitting the bumper (LEFT)
-		if (ballX < canvas.width/2) {
-			//X
-			if (barrierOn) {
-				if (ballX < ballSize) {
-					ballSpeedX = -ballSpeedX;
-				}
-				else if (ballX > canvas.width/2 - ballSize - 5 && (ballY < leftBumperLoc || ballY > leftBumperLoc + bumperHeight)) {
-					points = points - 10;
-					ballSpeedX = -ballSpeedX;
-				}
-				else if (ballX > canvas.width/2 - ballSize - 5 && (ballY > leftBumperLoc && ballY < leftBumperLoc + bumperHeight)) {
-					ballSpeedX = -ballSpeedX;
-				}
-			
-				//Y
-				if (ballY > canvas.height - ballSize || ballY < ballSize) {
-					ballSpeedY = -ballSpeedY;
-				}
-			}
-			else {
-				if (ballX < ballSize) {
-					ballSpeedX = -ballSpeedX;
-				}
-				else if (ballX > canvas.width/2 - ballSize - 5 && (ballY > leftBumperLoc && ballY < leftBumperLoc + bumperHeight)) {
-					ballSpeedX = -ballSpeedX;
-				}
-				
-				if (ballY > canvas.height - ballSize || ballY < ballSize) {
-					ballSpeedY = -ballSpeedY;
-				}
-			}
-		}
-			
-			
-			
-		if (ballX > canvas.width - ballSize || ballX < ballSize) {
-			ballSpeedX = -ballSpeedX;
-		}
-		if (ballY > canvas.height - ballSize || ballY < ballSize) {
-			ballSpeedY = -ballSpeedY;
-		}*/
-		
 		
 		//moving the bumpers
 		if (upArrow && leftBumperLoc > 7) {
@@ -447,8 +349,8 @@
 		ballY += ballSpeedY;
 	}
 	
-	setInterval(draw, 20);
-	setInterval(changeTimer, 1000);
+	var drawInterval = setInterval(draw, 20);
+	var timerInterval = setInterval(changeTimer, 1000);
 	
 	</script>
 	
