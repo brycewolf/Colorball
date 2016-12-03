@@ -16,13 +16,22 @@ a {
 	color: #00aed1;
 }
 
-.button {
+.button1 {
 	display: block;
 	width: 240px;
 	height: 60px;
 	position: relative;
 	border: 2px solid #000000;
-	margin: 400px auto;
+	margin: 200px auto;
+}
+
+.button2 {
+	display: block;
+	width: 240px;
+	height: 60px;
+	position: relative;
+	border: 2px solid #000000;
+	margin: 270px auto;
 }
 
 a:hover {
