@@ -22,7 +22,7 @@ a {
 	height: 60px;
 	position: relative;
 	border: 2px solid #000000;
-	margin: 200px auto;
+	margin: 100px auto;
 	border-radius: 5px;
 }
 
@@ -45,7 +45,8 @@ a {
 	text-align: center;
 	color: #000000;
 	line-height: 60px;
-	box-shadow: 10px 6px 0 #999900;
+	box-shadow: 0 6px 0 #999900;
+	border-radius: 5px;
 }
 
 .button2 .content2 {
@@ -57,7 +58,8 @@ a {
 	text-align: center;
 	color: #000000;
 	line-height: 60px;
-	box-shadow: 6px 6px 0 #999900;
+	box-shadow: 0 6px 0 #999900;
+	border-radius: 5px;
 }
 
 a:hover {
