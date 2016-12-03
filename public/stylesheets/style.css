@@ -21,9 +21,19 @@ a {
 	width: 240px;
 	height: 60px;
 	position: relative;
-	border: 2px solid #000000;
 	margin: 80px auto;
 	border-radius: 5px;
+	box-shadow: 0 9px #999;
+}
+
+.button1:hover {
+	background-color: #99900;
+}
+
+.button1:active {
+	background-color: #99900;
+	box-shadow: 0 5px #666;
+	transform: translateY(4px);
 }
 
 .button2 {
