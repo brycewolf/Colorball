@@ -27,6 +27,51 @@ app.listen(appEnv.port, '0.0.0.0', function() {
   console.log("server starting on " + appEnv.url);
 });
 
+
+var http = require('http');
+var host = "localhost";
+var port = 3030;
+var cloudant = {
+	url: "https://a9a0ed3a-e818-48a1-a198-e59de0d69ed7-bluemix:30055c0da5efa47b2d04eb3d3ac9736b14cd9747ea91e627328efe8a7a7a64e2@a9a0ed3a-e818-48a1-a198-e59de0d69ed7-bluemix.cloudant.com"
+}
+if (process.env.hasOwnProperty("VCAP_SERVICES")) {
+	var env = JSON.parse(process.env.VCAP_SERVICES);
+	var host = process.env.VCAP_APP_HOST;
+	var port = process.env.VCAP_APP_PORT;
+	cloudant = env['cloudantNoSQLDB'][0].credentials;
+}
+var nano = require('nano')(cloudant.url);
+var db = nano.db.use('hiscores')
+
+app.get('/hiscores', function(request, response) {
+  db.view('top_scores', 'top_scores_index', function(err, body) {
+  if (!err) {
+    var scores = [];
+      body.rows.forEach(function(doc) {
+        scores.push(doc.value);		      
+      });
+      response.send(JSON.stringify(scores));
+    }
+  });
+});
+
+app.get('/save_score', function(request, response) {
+  var name = request.query.name;
+  var score = request.query.score;
+
+  var scoreRecord = { 'name': name, 'score' : parseInt(score), 'date': new Date() };
+  db.insert(scoreRecord, function(err, body, header) {
+    if (!err) {       
+      response.send('Successfully added one score to the DB');
+    }
+  });
+});
+
+
+
+
+
+/*
 var mongodb = require('mongodb');
 var mongo = process.env.VCAP_SERVICES;
 var port = process.env.PORT || 3030;
@@ -58,3 +103,4 @@ MongoClient.connect(conn_str, function(err, db) {
 	}
 })
 
+*/
