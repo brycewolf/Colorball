@@ -26,3 +26,23 @@ app.listen(appEnv.port, '0.0.0.0', function() {
   // print a message when the server starts listening
   console.log("server starting on " + appEnv.url);
 });
+
+var mongo = process.env.VCAP_SERVICES;
+var port = process.env.PORT || 3030;
+var conn_str = "";
+if (mongo) {
+  var env = JSON.parse(mongo);
+  if (env['mongodb']) {
+    mongo = env['mongodb'][0]['credentials'];
+    if (mongo.url) {
+      conn_str = mongo.url;
+      console.log("Connected"+mongo);
+    } else {
+      console.log("No mongo found");
+    }  
+  } else {
+    conn_str = 'mongodb://localhost:27017';
+  }
+} else {
+  conn_str = 'mongodb://localhost:27017';
+}
