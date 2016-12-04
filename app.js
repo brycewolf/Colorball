@@ -46,3 +46,4 @@ if (mongo) {
 } else {
   conn_str = 'mongodb://localhost:27017';
 }
+console.log("Connected to mongo at "+conn_str);
