@@ -47,3 +47,10 @@ if (mongo) {
   conn_str = 'mongodb://localhost:27017';
 }
 console.log("Connected to mongo at "+conn_str);
+
+
+var MongoClient = require("mongodb").MongoClient;
+MongoClient.connect(conn_str, function(err, db) {
+	console.log("connected to mongo");
+	db.close();
+});
