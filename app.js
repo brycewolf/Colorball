@@ -36,7 +36,7 @@ if (mongo) {
     mongo = env['mongodb'][0]['credentials'];
     if (mongo.url) {
       conn_str = mongo.url;
-      console.log("Connected"+mongo);
+      console.log("Connected to mongo at "+conn_str);
     } else {
       console.log("No mongo found");
     }  
