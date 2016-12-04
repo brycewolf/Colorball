@@ -27,7 +27,7 @@ app.listen(appEnv.port, '0.0.0.0', function() {
   console.log("server starting on " + appEnv.url);
 });
 
-var mongo = process.env.VCAP_SERVICES;
+/*var mongo = process.env.VCAP_SERVICES;
 var port = process.env.PORT || 3030;
 var conn_str = "";
 if (mongo) {
@@ -47,3 +47,22 @@ if (mongo) {
   conn_str = 'mongodb://localhost:27017';
 }
 console.log("Connected to mongo at "+conn_str);
+*/
+
+var url = require('url');  
+var mongodb = require('mongodb');
+
+//get the mongoDB url using cfenv:
+var appEnv = cfenv.getAppEnv();  
+var mongoServiceUrl = appEnv.getServiceURL('mongodb-service');  
+var urlStr = url.format(mongoServiceUrl);
+
+//connect using the url:
+var MongoClient = mongodb.MongoClient;  
+MongoClient.connect(urlStr, function(err, db) {  
+  if (!err) {
+    console.log('connected to mongodb!'+urlStr);
+  } else {
+    console.log('error: ' + err);
+  }
+});
