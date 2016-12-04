@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>COLORBALL: Brick Breaker Evolved</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="stylesheets/style.css">
+  </head>
+
+  <body>
+  	<h1 id="message">LEADERBOARD</h1>
+    
+    <div (class="container")>
+    	<table>
+    		<tr>
+    			<th>Points</th>
+    			<th>Name</th>
+    			<th>Date</th>
+    		</tr>
+    	</table>
+    </div>
+    
+    <script>
+	 //code adapted from IBM tutorial at http://www.ibm.com/developerworks/cloud/library/cl-guesstheword-app/
+    function createTableRow(name, score, date) {
+		var dateObj = new Date(date);
+  		var formattedDate = dateObj.toLocaleDateString() + " " + dateObj.toLocaleTimeString();
+  		return '<tr> <td>' + score + '</td><td>' + name + '</td><td>' + formattedDate + '</td></tr>';
+	}
+
+	function populateTable() {	
+  		var table = app("#hiscore_table tr");
+  		app.get("/hiscores", function (data) {
+    		var hiscores = JSON.parse(data);
+    		hiscores.forEach(function (hiscore) {
+      			var html = createTableRow(hiscore.name, hiscore.score, hiscore.date);
+      		table.last().after(html);		
+    		});
+  		});	
+	}
+
+	populateTable();
+    </script>
+  </body>
+
+</html>
