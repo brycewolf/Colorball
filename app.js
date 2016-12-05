@@ -42,7 +42,7 @@ if (process.env.hasOwnProperty("VCAP_SERVICES")) {
 }
 var nano = require('nano')(cloudant.url);
 var db = nano.db.use('hiscores')
-var db1 = nano.db.use('colorballScores')
+var db1 = nano.db.use('colorballscores')
 
 app.get('/hiscores', function(request, response) {
   db.view('top_scores', 'top_scores_index', function(err, body) {
@@ -67,6 +67,8 @@ app.get('/save_score', function(request, response) {
     }
   });
 });
+
+
 
 app.get('/colorballscores', function(request, response) {
   db.view('colorballScores', 'colorballScores_index', function(err, body) {
