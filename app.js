@@ -71,7 +71,7 @@ app.get('/save_score', function(request, response) {
 
 
 app.get('/colorballscores', function(request, response) {
-  db.view('colorballScores', 'colorballScores_index', function(err, body) {
+  db1.view('colorballScores', 'colorballScores_index', function(err, body) {
   if (!err) {
     var scores = [];
       body.rows.forEach(function(doc) {
