@@ -144,8 +144,8 @@
 		window2d.closePath();
 	}
 	
-	function scoreIt(name, score) {
-		$.ajax({url: "/save_score?name=" + name + "&score=" + score, cache : false}).done(function(data) {
+	function scoreIt(name1, score) {
+		$.ajax({url: "/save_score?name=" + name1 + "&score=" + score, cache : false}).done(function(data) {
     	window.location.replace("/"); // Go to hiscore page
   		});
 	}
