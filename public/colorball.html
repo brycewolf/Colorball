@@ -14,7 +14,7 @@
 	<h1 id="message">COLORBALL</h1>
 	
 	<canvas id="gameWindow" width="800" height="610" style="border:5px solid #000000;"></canvas>
-	
+	<script src="jquery.js"></script>
 	<script>
 	var canvas = document.getElementById("gameWindow");
 	var window2d = canvas.getContext("2d");
@@ -329,6 +329,17 @@
 		window2d.closePath();
 	}
 	
+	function getName() {
+		var playerName = prompt("Log your name!", "Name here");
+		scoreIt(playerName, points);
+	}
+	
+	function scoreIt(name1, score) {
+		$.ajax({url: "/save_score?name=" + name1 + "&score=" + score, cache : false}).done(function(data) {
+    	window.location.replace("/colorballscores.html");
+  		});
+	}
+	
 	function displayScore() {
 		clearInterval(drawInterval);
 		clearInterval(timerInterval);
@@ -338,6 +349,7 @@
 		window2d.textAlign = "center";
 		window2d.fillText("POINTS: "+points, 400, 305);
 		window2d.closePath();
+		getName();
 	}
 	
 	function displayGameOver() {

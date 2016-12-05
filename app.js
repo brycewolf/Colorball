@@ -42,6 +42,7 @@ if (process.env.hasOwnProperty("VCAP_SERVICES")) {
 }
 var nano = require('nano')(cloudant.url);
 var db = nano.db.use('hiscores')
+var db1 = nano.db.use('colorballScores')
 
 app.get('/hiscores', function(request, response) {
   db.view('top_scores', 'top_scores_index', function(err, body) {
@@ -67,9 +68,29 @@ app.get('/save_score', function(request, response) {
   });
 });
 
+app.get('/colorballscores', function(request, response) {
+  db.view('colorballScores', 'colorballScores_index', function(err, body) {
+  if (!err) {
+    var scores = [];
+      body.rows.forEach(function(doc) {
+        scores.push(doc.value);		      
+      });
+      response.send(JSON.stringify(scores));
+    }
+  });
+});
 
+app.get('/save_cScore', function(request, response) {
+  var name = request.query.name;
+  var score = request.query.score;
 
-
+  var scoreRecord = { 'name': name, 'score' : parseInt(score), 'date': new Date() };
+  db1.insert(scoreRecord, function(err, body, header) {
+    if (!err) {       
+      response.send('Successfully added one score to the DB');
+    }
+  });
+});
 
 /*
 var mongodb = require('mongodb');
