@@ -364,6 +364,8 @@
 		window2d.textAlign = "center";
 		window2d.fillText("GAME OVER", 400, 305);
 		window2d.closePath();
+		alert("GAME OVER! You will not be returned home.");
+		window.location.replace("/index.html");
 	}
 	
 	function changeTimer() {	//change timer, call displayScore or displayGameOver if necessary 
