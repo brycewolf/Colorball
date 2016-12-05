@@ -369,7 +369,10 @@
 	}
 	
 	function changeTimer() {	//change timer, call displayScore or displayGameOver if necessary 
-		if (timeLeft >= 1 && (bricksRemainRight > 0 || bricksRemainLeft > 0)) {
+		if (points <= 00) {
+			displayGameOver();	//game over if you run your points to 0
+		}
+		if (timeLeft >= 1 && (bricksRemainRight > 0 || bricksRemainLeft > 0)) {	//if there's time and bricks left
 			timeLeft -= 1;	
 			if (points >= 2) {
 				points -= 2;	
