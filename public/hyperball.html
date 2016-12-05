@@ -145,6 +145,11 @@
 		window2d.closePath();
 	}
 	
+	function getName() {
+		var playerName = prompt("Log your name!", "Name here");
+		scoreIt(playerName, points);
+	}
+	
 	function scoreIt(name1, score) {
 		$.ajax({url: "/save_score?name=" + name1 + "&score=" + score, cache : false}).done(function(data) {
     	//window.location.replace("/");
@@ -158,7 +163,7 @@
 		window2d.textAlign = "center";
 		window2d.fillText("GAME OVER", 400, 500);
 		window2d.closePath();
-		scoreIt("bob", points);
+		getName();
 	}
 	
 	function displayScore() {
