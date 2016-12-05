@@ -16,6 +16,9 @@
 	<canvas id="gameWindow" width="800" height="610" style="border:5px solid #000000;"></canvas>
 	<script src="jquery.js"></script>
 	<script>
+	
+	//initialize the variables needed
+	
 	var canvas = document.getElementById("gameWindow");
 	var window2d = canvas.getContext("2d");
 	
@@ -313,7 +316,7 @@
 		window2d.closePath();
 	}
 	
-	function startPointCounter() {
+	function startPointCounter() {	//display the point counter on screen
 		window2d.beginPath();
 		window2d.font = "14px Helvetica";
 		window2d.fillText("Points", canvas.width/2 + 25, canvas.height - 25);
@@ -321,26 +324,26 @@
 		window2d.closePath();
 	}
 	
-	function startTimer() {
+	function startTimer() {		//display the timer on screen
 		window2d.beginPath();
 		window2d.font = "14px Helvetica";
 		window2d.fillText("Time", canvas.width/2 - 55, canvas.height -25);
 		window2d.fillText(timeLeft, canvas.width/2 - 48, canvas.height -9);
 		window2d.closePath();
 	}
-	
-	function getName() {
+		
+	function getName() {	//prompt player for their name
 		var playerName = prompt("Log your name!", "Name here");
 		scoreIt(playerName, points);
 	}
 	
-	function scoreIt(name1, score) {
+	function scoreIt(name1, score) {	//log the score and go to the leaderboard
 		$.ajax({url: "/save_cScore?name=" + name1 + "&score=" + score, cache : false}).done(function(data) {
     	window.location.replace("/colorballscores.html");
   		});
 	}
 	
-	function displayScore() {
+	function displayScore() {	//display score and call getName
 		clearInterval(drawInterval);
 		clearInterval(timerInterval);
 		//window2d.clearRect(0, 0, canvas.width, canvas.height);
@@ -352,7 +355,7 @@
 		getName();
 	}
 	
-	function displayGameOver() {
+	function displayGameOver() {	//gameover if player loses
 		clearInterval(drawInterval);
 		clearInterval(timerInterval);
 		//window2d.clearRect(0, 0, canvas.width, canvas.height);
@@ -363,7 +366,7 @@
 		window2d.closePath();
 	}
 	
-	function changeTimer() {
+	function changeTimer() {	//change timer, call displayScore or displayGameOver if necessary 
 		if (timeLeft >= 1 && (bricksRemainRight > 0 || bricksRemainLeft > 0)) {
 			timeLeft -= 1;	
 			if (points >= 2) {
@@ -384,6 +387,7 @@
 		}
 	}
 	
+	//main draw function for colorball
 	function draw() {
 		window2d.clearRect(0, 0, canvas.width, canvas.height);
 		startLeftBricks();
