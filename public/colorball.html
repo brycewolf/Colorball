@@ -244,7 +244,7 @@
 		}
 	}
 	
-	//startBricks adapted from MDN game dev tutorial
+	//startLeftBricks and startRightBricks adapted from MDN game dev tutorial
 	function startLeftBricks() {
 		for (var i = 0; i<numBrickCols; i++) {
 			for (var j = 0; j<numBrickRows; j++){
@@ -277,7 +277,7 @@
 		}
 	}
 	
-	function startBoundary() {
+	function startBoundary() {	//start the deadly  barrier
 		window2d.beginPath();
 		window2d.rect(canvas.width/2-5,0,10,canvas.height);
 		if (barrierTime > 20) {
@@ -292,7 +292,7 @@
 		window2d.closePath();
 	}
 	
-	function startBall() {
+	function startBall() {	//start the ball
 		window2d.beginPath();
 		window2d.arc(ballX, ballY, ballSize, 0, Math.PI*2);
 		window2d.fillStyle = ballColor;
@@ -300,7 +300,7 @@
 		window2d.closePath();
 	}
 	
-	function startRightBumper() {
+	function startRightBumper() {	//start the bumpers
 		window2d.beginPath();
 		window2d.rect(canvas.width/2+6, rightBumperLoc, 10, bumperHeight);
 		window2d.fillStyle = black;
