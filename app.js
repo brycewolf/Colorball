@@ -40,11 +40,13 @@ if (process.env.hasOwnProperty("VCAP_SERVICES")) {
 	var port = process.env.VCAP_APP_PORT;
 	cloudant = env['cloudantNoSQLDB'][0].credentials;
 }
+
+//The following code was adapted from the IBM tutorial http://www.ibm.com/developerworks/cloud/library/cl-guesstheword-app/
 var nano = require('nano')(cloudant.url);
 var db = nano.db.use('hiscores')
 var db1 = nano.db.use('colorballscores')
 
-app.get('/hiscores', function(request, response) {
+app.get('/hiscores', function(request, response) {					//request function to get the scores from hyperscores
   db.view('top_scores', 'top_scores_index', function(err, body) {
   if (!err) {
     var scores = [];
@@ -56,7 +58,7 @@ app.get('/hiscores', function(request, response) {
   });
 });
 
-app.get('/save_score', function(request, response) {
+app.get('/save_score', function(request, response) {			//save new scores to hyperscore cloudant
   var name = request.query.name;
   var score = request.query.score;
 
@@ -70,7 +72,7 @@ app.get('/save_score', function(request, response) {
 
 
 
-app.get('/colorballscores', function(request, response) {
+app.get('/colorballscores', function(request, response) {		//request function to get scores from colorballscores cloudant
   db1.view('colorballScores', 'colorballScores_index', function(err, body) {
   if (!err) {
     var scores = [];
@@ -82,7 +84,7 @@ app.get('/colorballscores', function(request, response) {
   });
 });
 
-app.get('/save_cScore', function(request, response) {
+app.get('/save_cScore', function(request, response) {		//function to save new colorballscores to cloudant
   var name = request.query.name;
   var score = request.query.score;
 
@@ -93,37 +95,3 @@ app.get('/save_cScore', function(request, response) {
     }
   });
 });
-
-/*
-var mongodb = require('mongodb');
-var mongo = process.env.VCAP_SERVICES;
-var port = process.env.PORT || 3030;
-var conn_str = "";
-if (mongo) {
-  var env = JSON.parse(mongo);
-  if (env['mongodb']) {
-    mongo = env['mongodb'][0]['credentials'];
-    if (mongo.url) {
-      conn_str = mongo.url;
-    } else {
-      console.log("No mongo found");
-    }  
-  } else {
-    conn_str = 'mongodb://localhost:27017';
-  }
-} else {
-  conn_str = 'mongodb://localhost:27017';
-}
-console.log("mongo URL at "+conn_str);
-
-var MongoClient = mongodb.MongoClient;
-MongoClient.connect(conn_str, function(err, db) {
-	if (!err) {
-		console.log('connected to mongodb');
-	}
-	else {
-		console.log('did not connect, error: '+err);
-	}
-})
-
-*/
