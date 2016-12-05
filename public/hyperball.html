@@ -14,7 +14,7 @@
 	
 	<canvas id="gameWindow" width="800" height="610" style="border:5px solid #000000;"></canvas>
 	<script src="jquery.js"></script>
-	<script >
+	<script>
 	
 	var canvas = document.getElementById("gameWindow");
 	var window2d = canvas.getContext("2d");
@@ -147,7 +147,7 @@
 	
 	function scoreIt(name1, score) {
 		$.ajax({url: "/save_score?name=" + name1 + "&score=" + score, cache : false}).done(function(data) {
-    	window.location.replace("/"); // Go to hiscore page
+    	//window.location.replace("/");
   		});
 	}
 	
