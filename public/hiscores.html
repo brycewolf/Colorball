@@ -32,8 +32,8 @@
 	}
 
 	function populateTable() {	
-  		var table = app("#hiscore_table tr");
-  		app.get("/hiscores", function (data) {
+  		var table = $("#hiscore_table tr");
+  		$.get("/hiscores", function (data) {
     		var hiscores = JSON.parse(data);
     		hiscores.forEach(function (hiscore) {
       			var html = createTableRow(hiscore.name, hiscore.score, hiscore.date);
